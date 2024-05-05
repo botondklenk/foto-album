@@ -10,7 +10,7 @@ export const startServer = async () => {
     const app = express();
 
     const port = 8080;
-    const mongoUri = 'mongodb://localhost:27017/pix';
+    const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/pix';
     
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
