@@ -6,7 +6,7 @@ import path from 'path';
 
 export const startServer = async () => {
     const app = express();
-    const port = 8000;
+    const port = 8080;
 
     app.use(bodyParser.json());
     app.use(session({
