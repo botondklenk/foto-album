@@ -14,6 +14,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         user = new User({ name, email, passhash });
         await user.save();
         req.session.userId = user._id.toString();
+        req.session.userName = user.name;
         res.redirect('/');
     } catch (error) {
         res.status(400).send((error as Error).message);
@@ -25,6 +26,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const user = await User.findOne({ email });
     if (user && await user.comparePassword(password)) {
         req.session.userId = user._id.toString();
+        req.session.userName = user.name;
         res.redirect('/');
     } else {
         res.status(401).send('Invalid email or password');

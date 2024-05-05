@@ -49,5 +49,6 @@ export const startServer = async () => {
 declare module "express-session" {
     interface SessionData {
         userId: string;
+        userName: string;
     }
 }
