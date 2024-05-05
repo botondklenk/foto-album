@@ -25,7 +25,8 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "mongoose": "^8.3.3"
+    "mongoose": "^8.3.3",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -34,7 +35,6 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.12.8",
     "nodemon": "^3.1.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
 }
