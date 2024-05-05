@@ -21,6 +21,7 @@ export const startServer = async () => {
         );
         next();
     });
+    
     app.use(express.static('static'));
 
     app.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap')));
