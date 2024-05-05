@@ -4,13 +4,20 @@ import bcrypt from 'bcrypt';
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
     const { name, email, password } = req.body;
-    // TODO: check if email is already in use
-    const passhash = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, passhash });
-    await user.save();
-    req.session.userId = user._id.toString();
-    res.send(user);
-    next();
+    console.log(name, email, password);
+    try {
+        const passhash = await bcrypt.hash(password, 10);
+        let user = await User.findOne({ email });
+        if (user) {
+            throw new Error('Email is already in use');
+        }
+        user = new User({ name, email, passhash });
+        await user.save();
+        req.session.userId = user._id.toString();
+        res.redirect('/');
+    } catch (error) {
+        res.status(400).send((error as Error).message);
+    }
 }
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
@@ -18,11 +25,10 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const user = await User.findOne({ email });
     if (user && await user.comparePassword(password)) {
         req.session.userId = user._id.toString();
-        res.send(user);
+        res.redirect('/');
     } else {
         res.status(401).send('Invalid email or password');
     }
-    next();
 }
 
 export const checkSession = (req: Request, res: Response, next: NextFunction) => {
@@ -38,6 +44,6 @@ export const logout = (req: Request, res: Response, next: NextFunction) => {
         if (err) {
             return next(err);
         }
-        res.send({ message: 'Logged out successfully' });
+        res.redirect('/');
     });
 }

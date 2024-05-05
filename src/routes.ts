@@ -4,28 +4,27 @@ import { render } from './controllers/render';
 
 const router = Router();
 
-router.use('/register',
-    // register,
+// views
+router.get('/register', 
     render('register')
 );
-
-router.use('/login', 
-    // login,
+router.get('/login',
     render('login')
 );
+router.get('/',
+    render('index')
+);
 
-router.use('/logout',
+// api
+router.post('/register',
+    register, 
+);
+router.post('/login',
+    login,
+);
+router.get('/logout',
     checkSession,
     logout
-);
-
-router.use('/protected', 
-    checkSession,
-    (req, res) => { res.send('You are authenticated');}
-);
-
-router.use('/',
-    render('index')
 );
 
 export default router;

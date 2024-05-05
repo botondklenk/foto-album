@@ -1,4 +1,53 @@
 <%- include('./include/header.ejs') %>
 <%- include('./include/navbar.ejs') %>
-    <h1>Welcome to the Home Page!</h1>
+
+<div class="container mt-3">
+    <div class="row">
+
+        <div class="col-12 col-lg-6">
+            <% if (session.userId) { %>
+                <!-- Upload button -->
+                <button class="btn btn-primary mb-3">Upload</button>
+            <% } %>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image Name</th>
+                        <th scope="col">Upload Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% 
+                    // Mocked data
+                    const images = [
+                        { name: 'Image 1', uploadDate: '2022-01-01' },
+                        { name: 'Image 2', uploadDate: '2022-01-02' },
+                        { name: 'Image 3', uploadDate: '2022-01-03' },
+                    ];
+                    
+                    images.forEach((image, index) => { %>
+                        <tr>
+                            <th scope="row"><%= index + 1 %></th>
+                            <td><%= image.name %></td>
+                            <td><%= image.uploadDate %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-lg-6">
+            <% if (session.userId) { %>
+                <div class="d-flex">
+                    <button class="btn btn-danger mb-3">Delete</button>
+                </div>
+                <% } %>
+            <div class="row">
+                <img src="https://via.placeholder.com/300x200" alt="Placeholder image" />
+            </div>
+        </div>
+    </div>
+</div>
+
 <%- include('./include/footer.ejs') %>
