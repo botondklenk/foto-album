@@ -1,16 +1,17 @@
 import express from 'express';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-import api from './api.routes';
-import views from './views.routes';
+import api from './routing/api.routes';
+import views from './routing/views.routes';
 import path from 'path';
 import mongoose from 'mongoose';
+
 
 export const startServer = async () => {
     const app = express();
 
-    const port = 8080;
-    const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/pix';
+    const port = process.env.PORT || 8080;
+    const mongoUri = process.env.MONGODB_URI || 'a mongodb uri string';
     
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());

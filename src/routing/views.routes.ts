@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { render } from './services/render';
+import { render } from '../services/render';
 
 const router = Router();
 
