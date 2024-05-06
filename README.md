@@ -11,19 +11,19 @@ Az alkalmazást `express.js` segítségével készítettem, szerver oldali rende
 
 - [x] Openshift deploy
 - [x] Felhasználó kezelés
-- [] Képek kezelése
+- [ ] Képek kezelése
 
 ### 5. Feladat (terv)
 
-- [] Openshift deploy
-- [] Felhasználó kezelés
-- [] Képek kezelése
-- [] Külön storage a képeknek
+- [ ] Openshift deploy
+- [ ] Felhasználó kezelés
+- [ ] Képek kezelése
+- [ ] Külön storage a képeknek
 
 ### 6. Feladat (terv)
 
-- [] Openshift deploy
-- [] Felhasználó kezelés
-- [] Képek mkezelése
-- [] Külön storage a képeknek
-- [] A storge-ban serverless function futtatása egy tumblnail generálására
+- [ ] Openshift deploy
+- [ ] Felhasználó kezelés
+- [ ] Képek mkezelése
+- [ ] Külön storage a képeknek
+- [ ] A storge-ban serverless function futtatása egy tumblnail generálására
