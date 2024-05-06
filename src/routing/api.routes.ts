@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { register, login, checkSession, logout } from '../services/auth'
-import { getImage, getImages, saveImageData, uploadImage } from '../services/images';
+import { deleteImage, getImage, getImages, saveImageData, uploadImage } from '../services/images';
 
 const router = Router();
 
@@ -19,6 +19,11 @@ router.post('/upload',
     checkSession,
     uploadImage(),
     saveImageData
+);
+
+router.post('/delete',
+    checkSession,
+    deleteImage
 );
 
 router.get('/',

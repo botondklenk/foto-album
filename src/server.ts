@@ -13,7 +13,7 @@ export const startServer = async () => {
 
     const port = process.env.PORT || 8080;
     const mongoUri = process.env.MONGODB_URI || 'a mongodb uri string';
-    
+
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
 
@@ -26,15 +26,17 @@ export const startServer = async () => {
         store: MongoStore.create({ mongoUrl: mongoUri }) as any
     }));
 
-    app.use((req, res, next) => {
-        console.log(
-            `${new Date().toISOString()} - ${req.method} ${req.originalUrl}`
-        );
-        next();
-    });
+    if (process.env.NODE_ENV === 'development') {
+        app.use((req, res, next) => {
+            console.log(
+                `${new Date().toISOString()} - ${req.method} ${req.originalUrl}`
+            );
+            next();
+        });
+    }
 
     app.use('/', api);
-    
+
     app.use(express.static('static'));
     app.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap')));
     app.set('views', path.join(__dirname, 'views'));
