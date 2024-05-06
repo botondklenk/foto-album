@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 
 export const startServer = async () => {
     const app = express();
+    console.log(process.env.MONGODB_URI);
 
     const port = process.env.PORT || 8080;
     const mongoUri = process.env.MONGODB_URI || 'a mongodb uri string';
