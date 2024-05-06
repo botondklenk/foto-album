@@ -22,6 +22,7 @@ Az alkalmazást `express.js` segítségével készítettem, szerver oldali rende
     - [X] Törlés (bejelentkezett felhasználóként - bárki törölheti bármelyik képet)
     - [X] Feltöltés (bejelentkezett felhasználóként)
     - [X] Rendezés (oszlopokra feljlécére kattintva)
+    - [X] Paging (5 kép oldalanként)
 
 ### 6. Feladat (terv)
 
